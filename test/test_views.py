@@ -9,9 +9,10 @@ class FlaskrTestCase(unittest.TestCase):
         self.app = app.test_client()
 
     def test_outputs(self):
-        rv = self.app.get('/outputs') # noqa
+        rv = self.app.get('/outputs')
         s = str(rv.data)
         ','.join(SUPPORTED) in s
 
     def test_msg_with_output(self):
         rv = self.app.get('/?output=json')
+        self.assertEqual(b'{ "imie":"Wojtek", "msg":Hello World!"}', rv.data)
