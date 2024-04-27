@@ -9,7 +9,7 @@ class FlaskrTestCase(unittest.TestCase):
         self.app = app.test_client()
 
     def test_outputs(self):
-        rv = self.app.get('/outputs')
+        rv = self.app.get('/outputs') # noqa
         s = str(rv.data)
         ','.join(SUPPORTED) in s
 
